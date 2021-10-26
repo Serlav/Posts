@@ -5,12 +5,14 @@ import org.junit.Assert.*
 class WallServiceTest {
 
     @Test
-    fun add() {
+    fun add(post: Post) {
         //arrange
-
+val post = Post(id = 1)
 
         //act
-        val result = 1
+        val result = add(
+            post = post
+        )
 
         //assert
         assertEquals(1, result)

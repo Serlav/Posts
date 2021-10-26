@@ -1,6 +1,6 @@
 fun main() {
 
-    val original = Post(id = 1)
+    val original = Post(id = 2)
 
     WallService.add(original)
 }
