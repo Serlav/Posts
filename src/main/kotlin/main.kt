@@ -9,13 +9,18 @@ object WallService {
     private var posts = emptyArray<Post>()
 
     fun add(post: Post): Post {
+        if (posts.isEmpty()) {
+            post.id = 0
+        } else {
+            post.id = posts.last().id + 1
+        }
         posts += post
         return posts.last()
     }
 }
 
 data class Post(
-    val id: Int,
+    var id: Int = 0,
     val ownerId: Int = 0,
     val fromId: Int = 0,
     val createdBy: Int = 0,
