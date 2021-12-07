@@ -1,21 +1,36 @@
 fun main() {
 
-    val original = Post(id = 2)
+    var original = Post(id = 2, date = 25)
+    println(original)
 
     WallService.add(original)
+    println(original)
+    original = Post()
+
+    WallService.update(original)
+
+    println(original)
 }
 
 object WallService {
-    private var posts = emptyArray<Post>()
+    private var wall = emptyArray<Post>()
 
     fun add(post: Post): Post {
-        if (posts.isEmpty()) {
+        if (wall.isEmpty()) {
             post.id = 0
         } else {
-            post.id = posts.last().id + 1
+            post.id = wall.last().id + 1
         }
-        posts += post
-        return posts.last()
+        wall += post
+        return wall.last()
+    }
+
+    fun update(newPost: Post) {
+        for (post in wall) {
+            if (newPost.id == post.id) {
+                post.copy(id = post.id, date = post.date)
+            }
+        }
     }
 }
 

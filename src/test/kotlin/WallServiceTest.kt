@@ -7,7 +7,7 @@ class WallServiceTest {
     @Test
     fun add(post: Post) {
         //arrange
-val post = Post(id = 1)
+        val post = Post()
 
         //act
         val result = add(

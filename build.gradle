@@ -12,7 +12,7 @@ repositories {
 
 dependencies {
     implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.5.31'
-    implementation 'junit:junit:4.13.2'
+    implementation 'junit:junit:4.13.1'
     /* https://mvnrepository.com/artifact/junit/junit */
     testImplementation 'junit:junit:4.13.2'
 }
