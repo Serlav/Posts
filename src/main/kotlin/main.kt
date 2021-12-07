@@ -1,11 +1,7 @@
 fun main() {
 
-    var original = Post(id = 2, date = 25)
+    val original = Post(id = 2)
     println(original)
-
-    WallService.add(original)
-    println(original)
-    original = Post()
 
     WallService.update(original)
 
@@ -26,9 +22,9 @@ object WallService {
     }
 
     fun update(newPost: Post) {
-        for (post in wall) {
+        for ((index, post) in wall.withIndex()) {
             if (newPost.id == post.id) {
-                post.copy(id = post.id, date = post.date)
+                wall[index] = newPost.copy(ownerId = post.ownerId, date = post.date)
             }
         }
     }
