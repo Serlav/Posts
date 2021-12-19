@@ -2,7 +2,7 @@ fun main() {
 
     val original = Post(id = 2)
     println(original)
-
+    WallService.add(original)
     WallService.update(original)
 
     println(original)
@@ -21,12 +21,15 @@ object WallService {
         return wall.last()
     }
 
-    fun update(newPost: Post) {
+    fun update(newPost: Post): Boolean {
+        var idTrue = false
         for ((index, post) in wall.withIndex()) {
             if (newPost.id == post.id) {
                 wall[index] = newPost.copy(ownerId = post.ownerId, date = post.date)
+                idTrue = true
             }
         }
+        return idTrue
     }
 }
 
