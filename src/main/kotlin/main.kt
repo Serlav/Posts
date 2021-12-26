@@ -10,8 +10,26 @@ fun main() {
     println(original)
 }
 
+class PostNotFoundException(message: String) : RuntimeException(message)
+
 object WallService {
     private var wall = emptyArray<Post>()
+
+    private var comments = emptyArray<Comment>()
+
+    fun createComment(comment: Comment, postId: Int) {
+        var found = false
+        for (post in wall) {
+            if (postId == post.id) {
+                post.comments += comment
+                found = true
+                break
+            }
+        }
+        if (!found) {
+            throw PostNotFoundException("no post found $postId")
+        }
+    }
 
     fun add(post: Post): Post {
         if (wall.isEmpty()) {
@@ -45,7 +63,7 @@ data class Post(
     val replyOwnerId: Int = 0,
     val replyPostId: Int = 0,
     val friendsOnly: Boolean = true,
-    val comments: Comments = Comments(),
+    var comments: Array<Comment> = emptyArray<Comment>(),
     val copyright: Copyright = Copyright(),
     val likes: Likes = Likes(),
     val reposts: Reposts = Reposts(),
@@ -63,12 +81,13 @@ data class Post(
     val attachments: Array<Attachment>? = null
 )
 
-class Comments(
-    val count: Int = 0,
-    val canPost: Boolean = true,
-    val groupsCanPost: Boolean = true,
-    val canClose: Boolean = true,
-    val canOpen: Boolean = true
+class Comment(
+    val id: Int = 0,
+    val from_id: Int = 0,
+    val date: Int = 0,
+    val text: String = "",
+    val attachments: Array<Attachment>? = null,
+    val replyToComment: Int = 0
 )
 
 class Copyright(

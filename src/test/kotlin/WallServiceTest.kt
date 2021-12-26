@@ -4,6 +4,15 @@ import org.junit.Assert.*
 
 class WallServiceTest {
 
+    @Test(expected = PostNotFoundException::class)
+    fun shouldThrow() {
+
+        val comment = Comment(id = 2, text = "Message")
+        val postId = 2
+        WallService.createComment(comment, postId)
+    }
+
+
     @Test
     fun add() {
         //arrange
