@@ -1,5 +1,4 @@
 class Event(
-    override val type: String = "Event",
     val id: Long,
     val time: Int,
     val memberStatus: Int = 3,
@@ -8,4 +7,4 @@ class Event(
     val text: String,
     val buttonText: String,
     val friends: Int
-) : Attachment
+)

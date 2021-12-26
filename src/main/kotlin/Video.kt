@@ -1,4 +1,6 @@
 class Video(
-    override val type: String = "Video",
     val id: Int,
-) : Attachment
+    val album_id: Int,
+    val owner_id: Int,
+    val user_id: Int
+)

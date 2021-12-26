@@ -1,3 +1,5 @@
+import attachments.Attachment
+
 fun main() {
 
     val original = Post(id = 2)
@@ -57,7 +59,8 @@ data class Post(
     val markedAsAds: Boolean = true,
     val isFavorite: Boolean = true,
     val donut: Donat = Donat(),
-    val postponedId: Int = 0
+    val postponedId: Int = 0,
+    val attachments: Array<Attachment>? = null
 )
 
 class Comments(
